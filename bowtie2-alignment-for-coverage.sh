@@ -36,6 +36,7 @@ samtools index "$prefix"-sorted.bam
 samtools depth $prefix-sorted.bam |  awk '{sum+=$3} END { print "Average = ",sum/NR}' > assembly_coverage ;
 var=$(samtools view -c -F 260 $prefix-sorted.bam); echo "Number of mapped reads = $var" >> assembly_coverage ;
 
+#Line below to append computed coverage to Spades assembly stats file, if present:
 #cat assembly_coverage $prefix-stats > assembly_statistics ;
 
 #Cleanup
